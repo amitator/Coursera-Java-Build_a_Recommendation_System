@@ -5,10 +5,13 @@ import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
- * Rating
+ * FirstRatings
  *
  * @author Igor Prus
  * @version Nov 09/16
@@ -45,6 +48,8 @@ public class FirstRatings {
         int minutesCounter = 0;
         String genre = "Comedy";
         int movieLength = 150;
+        Map<String, Integer> directorsMap = new HashMap<>();
+
         for (Movie movie: movies){
             System.out.println(movie);
             if (movie.getGenres().contains(genre)){
@@ -53,11 +58,29 @@ public class FirstRatings {
             if(movie.getMinutes() > movieLength){
                 minutesCounter++;
             }
+            System.out.println("Director " + movie.getDirector());
+            String[] directors = movie.getDirector().split(",");
+            for (String dir: directors) {
+                if (!directorsMap.containsKey(dir)){
+                    directorsMap.put(dir, 1);
+                } else {
+                    int counter = directorsMap.get(dir);
+                    directorsMap.put(dir, ++counter);
+                }
+            }
         }
         System.out.println("\nThere are " + genreCounter +
                 " movies in " + genre);
         System.out.println("\nThere are " + minutesCounter +
                 " movies longer then " + movieLength + " minutes");
+        System.out.println("\nMaximum number of movies (" + directorsMap.size() +
+                ") having following directors:");
+        int maxValue = Collections.max(directorsMap.values());
+        for (Map.Entry<String, Integer> entry: directorsMap.entrySet()) {
+            if (entry.getValue() == maxValue){
+                System.out.println(entry.getKey());
+            }
+        }
     }
 }
 
