@@ -1,5 +1,11 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+package org.coursera.brs.Week_1_Loading_Data;
+
+/**
+ * Movie
+ *
+ * @author Igor Prus
+ * @version Nov 09/16
+ */
 
 // An immutable passive data object (PDO) to represent item data
 public class Movie {

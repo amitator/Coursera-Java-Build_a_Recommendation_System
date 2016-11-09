@@ -1,9 +1,10 @@
+package org.coursera.brs.Week_1_Loading_Data;
 
 /**
- * Write a description of class Rater here.
+ * Rater
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Igor Prus
+ * @version Nov 09/16
  */
 
 import java.util.*;
