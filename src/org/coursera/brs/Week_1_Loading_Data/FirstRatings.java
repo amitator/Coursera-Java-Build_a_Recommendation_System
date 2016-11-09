@@ -129,24 +129,27 @@ public class FirstRatings {
         String movieID = "1798709";
         int maxNumRatings = 0;
         int numRatingForParticularMovieCounter = 0;
+        ArrayList<String> itemsRated = new ArrayList<>();
         for (Rater current : raters){
             if (neededRaterID.equals(current.getID())) {
                 //Getting movieIDs
                 ArrayList<String> ratedMoviesID = current.getItemsRated();
                 System.out.println("Rater ID: " + current.getID()
                         + "\t\t" + "Number of ratings: " + current.numRatings());
-                if (current.numRatings() > maxNumRatings){
-                    maxNumRatings = current.numRatings();
-                }
                 //Printing all movieIDs and ratings of current rater
 //                for (String movie : ratedMoviesID) {
 //                    System.out.println("\t\t\t\t" + "Movie ID: " + movie
 //                            + "\t" + "Rating: " + current.getRating(movie));
 //                }
             }
+            if (current.numRatings() > maxNumRatings){
+                maxNumRatings = current.numRatings();
+            }
             if (current.hasRating(movieID)){
                 numRatingForParticularMovieCounter++;
             }
+            //How many different movies have been rated by all these raters
+            itemsRated.addAll(current.getItemsRated());
         }
         //Creating list of raters with max number ratings
         ArrayList<Rater> list = new ArrayList<>();
@@ -165,6 +168,8 @@ public class FirstRatings {
         //Number of ratings for a particular movie
         System.out.println("\nMovie: " + movieID + " has " + numRatingForParticularMovieCounter
                         + " ratings");
+        Set<String> uniqueRatedMovies = new HashSet<>(itemsRated);
+        System.out.println("\nThere are " + uniqueRatedMovies.size() + " unique movies rated");
     }
 }
 
