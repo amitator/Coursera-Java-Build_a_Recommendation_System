@@ -41,9 +41,16 @@ public class FirstRatings {
         System.out.println("\t\t\ttestLoadMovies()");
         System.out.println("===================================");
         System.out.println("Number of movies: " + movies.size());
+        int genreCounter = 0;
+        String genre = "Comedy";
         for (Movie movie: movies){
             System.out.println(movie);
+            if (movie.getGenres().contains(genre)){
+                genreCounter++;
+            }
         }
+        System.out.println("\nThere are " + genreCounter +
+                " movies in " + genre);
     }
 }
 
