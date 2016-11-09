@@ -126,7 +126,15 @@ public class FirstRatings {
         System.out.println("===================================");
         System.out.println("Number of raters: " + raters.size() + "\n");
         for (Rater current : raters){
-            System.out.println(current.getID() + "\t" + current.getItemsRated());
+            //To print movieID
+            ArrayList<String> ratedMoviesID = current.getItemsRated();
+            System.out.println("Rater ID: " + current.getID()
+                    + "\t\t" + "Number of ratings: " + current.numRatings());
+            //Printing all rated movies
+            for (String movie: ratedMoviesID) {
+                System.out.println("\t\t\t\t" + "Movie ID: " + movie
+                    + "\t" + "Rating: " + current.getRating(movie));
+            }
         }
     }
 }
