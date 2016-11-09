@@ -125,16 +125,37 @@ public class FirstRatings {
         System.out.println("\t\t\ttestLoadRaters()");
         System.out.println("===================================");
         System.out.println("Number of raters: " + raters.size() + "\n");
+        String neededRaterID = "2";
+        int maxNumRatings = 0;
         for (Rater current : raters){
-            //To print movieID
-            ArrayList<String> ratedMoviesID = current.getItemsRated();
-            System.out.println("Rater ID: " + current.getID()
-                    + "\t\t" + "Number of ratings: " + current.numRatings());
-            //Printing all rated movies
-            for (String movie: ratedMoviesID) {
-                System.out.println("\t\t\t\t" + "Movie ID: " + movie
-                    + "\t" + "Rating: " + current.getRating(movie));
+            if (neededRaterID.equals(current.getID())) {
+                //Getting movieIDs
+                ArrayList<String> ratedMoviesID = current.getItemsRated();
+                System.out.println("Rater ID: " + current.getID()
+                        + "\t\t" + "Number of ratings: " + current.numRatings());
+                if (current.numRatings() > maxNumRatings){
+                    maxNumRatings = current.numRatings();
+                }
+                //Printing all movieIDs and ratings of current rater
+//                for (String movie : ratedMoviesID) {
+//                    System.out.println("\t\t\t\t" + "Movie ID: " + movie
+//                            + "\t" + "Rating: " + current.getRating(movie));
+//                }
             }
+        }
+        //Creating list of raters with max number ratings
+        ArrayList<Rater> list = new ArrayList<>();
+        for (Rater current: raters){
+            if (current.numRatings() == maxNumRatings){
+                list.add(current);
+
+            }
+        }
+        System.out.println("\nMax number of ratings: " + maxNumRatings
+                        + "\nRaters with max:");
+        //Printing previous list
+        for (Rater curr: list){
+            System.out.println("RaterID: " + curr.getID());
         }
     }
 }
