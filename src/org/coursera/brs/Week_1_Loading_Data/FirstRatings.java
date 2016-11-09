@@ -42,15 +42,22 @@ public class FirstRatings {
         System.out.println("===================================");
         System.out.println("Number of movies: " + movies.size());
         int genreCounter = 0;
+        int minutesCounter = 0;
         String genre = "Comedy";
+        int movieLength = 150;
         for (Movie movie: movies){
             System.out.println(movie);
             if (movie.getGenres().contains(genre)){
                 genreCounter++;
             }
+            if(movie.getMinutes() > movieLength){
+                minutesCounter++;
+            }
         }
         System.out.println("\nThere are " + genreCounter +
                 " movies in " + genre);
+        System.out.println("\nThere are " + minutesCounter +
+                " movies longer then " + movieLength + " minutes");
     }
 }
 
