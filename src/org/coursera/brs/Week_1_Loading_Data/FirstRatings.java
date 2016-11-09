@@ -31,8 +31,36 @@ public class FirstRatings {
             Movie movie = new Movie(id, title, year, genres, director, country, poster, minutes);
             result.add(movie);
         }
-
         return result;
     }
 
+    public void testLoadMovies(){
+        ArrayList<Movie> movies = new ArrayList<>();
+        movies = loadMovies("data\\ratedmovies_short.csv");
+        System.out.println("\n===================================");
+        System.out.println("\t\t\ttestLoadMovies()");
+        System.out.println("===================================");
+        System.out.println("Number of movies: " + movies.size());
+        for (Movie movie: movies){
+            System.out.println(movie);
+        }
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
