@@ -4,10 +4,7 @@ import edu.duke.FileResource;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 
 /**
@@ -59,11 +56,14 @@ public class FirstRatings {
                 minutesCounter++;
             }
             System.out.println("Director " + movie.getDirector());
+            //Some movies might have more than 1 director
             String[] directors = movie.getDirector().split(",");
             for (String dir: directors) {
                 if (!directorsMap.containsKey(dir)){
+                    //Adding first record (Dir Name, 1 - movie counter)
                     directorsMap.put(dir, 1);
                 } else {
+                    //Get current counter and increase it
                     int counter = directorsMap.get(dir);
                     directorsMap.put(dir, ++counter);
                 }
@@ -77,10 +77,30 @@ public class FirstRatings {
                 ") having following directors:");
         int maxValue = Collections.max(directorsMap.values());
         for (Map.Entry<String, Integer> entry: directorsMap.entrySet()) {
+            //If director's movie counter == MAX, then print him
             if (entry.getValue() == maxValue){
                 System.out.println(entry.getKey());
             }
         }
+    }
+
+    public ArrayList<Rater> loadRaters(String fileName){
+        ArrayList<Rater> result = new ArrayList<>();
+        FileResource resource = new FileResource(fileName);
+        CSVParser parser = resource.getCSVParser();
+        for (CSVRecord record : parser){
+            String raterID = record.get("rater_id");
+            String movieID = record.get("movie_id");
+            Double rating = Double.parseDouble(record.get("rating"));
+            Rater rater = new Rater(raterID);
+            if (!result.contains(rater)) {
+                rater.addRating(movieID, rating);
+                result.add(rater);
+            } else {
+                rater.addRating(movieID, rating);
+            }
+        }
+        return result;
     }
 }
 
