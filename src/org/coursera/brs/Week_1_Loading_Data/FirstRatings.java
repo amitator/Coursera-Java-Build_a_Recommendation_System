@@ -126,7 +126,9 @@ public class FirstRatings {
         System.out.println("===================================");
         System.out.println("Number of raters: " + raters.size() + "\n");
         String neededRaterID = "2";
+        String movieID = "1798709";
         int maxNumRatings = 0;
+        int numRatingForParticularMovieCounter = 0;
         for (Rater current : raters){
             if (neededRaterID.equals(current.getID())) {
                 //Getting movieIDs
@@ -141,6 +143,9 @@ public class FirstRatings {
 //                    System.out.println("\t\t\t\t" + "Movie ID: " + movie
 //                            + "\t" + "Rating: " + current.getRating(movie));
 //                }
+            }
+            if (current.hasRating(movieID)){
+                numRatingForParticularMovieCounter++;
             }
         }
         //Creating list of raters with max number ratings
@@ -157,6 +162,9 @@ public class FirstRatings {
         for (Rater curr: list){
             System.out.println("RaterID: " + curr.getID());
         }
+        //Number of ratings for a particular movie
+        System.out.println("\nMovie: " + movieID + " has " + numRatingForParticularMovieCounter
+                        + " ratings");
     }
 }
 
