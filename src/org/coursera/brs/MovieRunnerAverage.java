@@ -23,10 +23,11 @@ public class MovieRunnerAverage {
         System.out.println("\nNumber of movies: " + secondRatings.getMovieSize()
                 + "\t" + "Number of ratings: " + secondRatings.getRaterSize() + "\n");
         //For all those movies that have at least a specified number of ratings
-        int minNumRatings = 30;
+        int minNumRatings = 12;
         ArrayList<Rating> ratings = secondRatings.getAverageRatings(minNumRatings);
         Collections.sort(ratings);
         System.out.println("Movies that have at least " + minNumRatings + " ratings");
+        System.out.println("Total number of movies " + ratings.size());
         for (Rating current: ratings){
             System.out.println(current.getValue() + "\t" + secondRatings.getTitle(current.getItem()));
         }
@@ -43,7 +44,7 @@ public class MovieRunnerAverage {
         SecondRatings secondRatings = new SecondRatings("data\\ratedmovies.csv", "data\\ratings.csv");
         ArrayList<Rating> averageRatings = secondRatings.getAverageRatings(1);
         //Movie title to find
-        String title = "The Godfather";
+        String title = "Vacation";
         for (Rating rating: averageRatings){
             if (rating.getItem().equals(secondRatings.getID(title))){
                 System.out.println(title + " has average rating " + rating.getValue());

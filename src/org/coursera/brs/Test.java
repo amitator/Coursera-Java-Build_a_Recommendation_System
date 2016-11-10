@@ -6,8 +6,8 @@ public class Test {
 //        firstRatings.testLoadMovies();
 //        firstRatings.testLoadRaters();
         MovieRunnerAverage runner = new MovieRunnerAverage();
-//        runner.printAverageRatings();
-        runner.getAverageRatingOneMovie();
+        runner.printAverageRatings();
+//        runner.getAverageRatingOneMovie();
 
 
 //        SecondRatings secondRatings = new SecondRatings();
