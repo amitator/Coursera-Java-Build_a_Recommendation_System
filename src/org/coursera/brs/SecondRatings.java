@@ -111,6 +111,20 @@ public class SecondRatings {
         return "Movie with movieID " + movieID + " was not found";
     }
 
+    /**
+     * This method for finding movieID of the movie with certain title
+     *
+     * @param title representing title of the movie
+     * @return the ID of the movie with that title
+     * */
+    public String getID(String title){
+        for (Movie movie: myMovies){
+            if (movie.getTitle().equals(title)){
+                return movie.getID();
+            }
+        }
+        return "NO SUCH TITLE."
+    }
 
 }
 
