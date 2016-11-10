@@ -84,20 +84,20 @@ public class FirstRatings {
         }
     }
 
-    public ArrayList<Rater> loadRaters(String fileName){
-        ArrayList<Rater> result = new ArrayList<>();
+    public ArrayList<PlainRater> loadRaters(String fileName){
+        ArrayList<PlainRater> result = new ArrayList<>();
         FileResource resource = new FileResource(fileName);
         CSVParser parser = resource.getCSVParser();
         for (CSVRecord record : parser){
             String raterID = record.get("rater_id");
             String movieID = record.get("movie_id");
             Double rating = Double.parseDouble(record.get("rating"));
-            Rater rater = new Rater(raterID);
+            PlainRater rater = new PlainRater(raterID);
             //Flag turns TRUE if rater was edited and rating was added to that rater
             boolean flag = false;
             if (result.size() != 0){
                 //running over all result
-                for (Rater current: result){
+                for (PlainRater current: result){
                     //if rater in result then add him more rating and change the flag
                     if (current.getID().equals(raterID)){
                         current.addRating(movieID, rating);
@@ -119,7 +119,7 @@ public class FirstRatings {
     }
 
     public void testLoadRaters(){
-        ArrayList<Rater> raters = new ArrayList<>();
+        ArrayList<PlainRater> raters = new ArrayList<>();
         raters = loadRaters("data\\ratings.csv");
         System.out.println("\n===================================");
         System.out.println("\t\t\ttestLoadRaters()");
@@ -130,7 +130,7 @@ public class FirstRatings {
         int maxNumRatings = 0;
         int numRatingForParticularMovieCounter = 0;
         ArrayList<String> itemsRated = new ArrayList<>();
-        for (Rater current : raters){
+        for (PlainRater current : raters){
             if (neededRaterID.equals(current.getID())) {
                 //Getting movieIDs
                 ArrayList<String> ratedMoviesID = current.getItemsRated();
@@ -152,8 +152,8 @@ public class FirstRatings {
             itemsRated.addAll(current.getItemsRated());
         }
         //Creating list of raters with max number ratings
-        ArrayList<Rater> list = new ArrayList<>();
-        for (Rater current: raters){
+        ArrayList<PlainRater> list = new ArrayList<>();
+        for (PlainRater current: raters){
             if (current.numRatings() == maxNumRatings){
                 list.add(current);
 
@@ -162,7 +162,7 @@ public class FirstRatings {
         System.out.println("\nMax number of ratings: " + maxNumRatings
                         + "\nRaters with max:");
         //Printing previous list
-        for (Rater curr: list){
+        for (PlainRater curr: list){
             System.out.println("RaterID: " + curr.getID());
         }
         //Number of ratings for a particular movie

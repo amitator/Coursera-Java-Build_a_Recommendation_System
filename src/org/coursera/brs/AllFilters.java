@@ -1,3 +1,14 @@
+package org.coursera.brs;
+
+/**
+ * AllFilters
+ *
+ * @author Igor Prus
+ * @version Nov 10/16
+ *
+ *
+ */
+
 import java.util.ArrayList;
 
 public class AllFilters implements Filter {

@@ -1,3 +1,13 @@
+package org.coursera.brs;
+
+/**
+ * MovieDatabase
+ *
+ * @author Igor Prus
+ * @version Nov 10/16
+ *
+ *
+ */
 
 public class YearAfterFilter implements Filter {
 	private int myYear;

@@ -1,6 +1,16 @@
-import java.util.*;
-import org.apache.commons.csv.*;
-import edu.duke.FileResource;
+package org.coursera.brs;
+
+/**
+ * MovieDatabase
+ *
+ * @author Igor Prus
+ * @version Nov 10/16
+ *
+ *
+ */
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class MovieDatabase {
     private static HashMap<String, Movie> ourMovies;

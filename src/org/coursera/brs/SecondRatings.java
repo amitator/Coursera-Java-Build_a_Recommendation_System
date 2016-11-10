@@ -13,7 +13,7 @@ import java.util.*;
 
 public class SecondRatings {
     private ArrayList<Movie> myMovies;
-    private ArrayList<Rater> myRaters;
+    private ArrayList<PlainRater> myRaters;
     
     public SecondRatings() {
         // default constructor
@@ -47,7 +47,7 @@ public class SecondRatings {
     public double getAverageByID(String movieID, int minimalRaters){
         int ratersCounter = 0;
         double totalRatings = 0.0;
-        for (Rater rater: myRaters){
+        for (PlainRater rater: myRaters){
             //If rater has rating for movieID movie then ++counter and sum rating to rating counter
             if (rater.hasRating(movieID)){
                 ratersCounter++;
@@ -73,7 +73,7 @@ public class SecondRatings {
         ArrayList<Rating> result= new ArrayList<>();
         ArrayList<String> movieIdRated = new ArrayList<>();
         //Adding all ratings made by each rater to movieIdRated
-        for (Rater current : myRaters) {
+        for (PlainRater current : myRaters) {
             movieIdRated.addAll(current.getItemsRated());
         }
         //To store frequency of how many those movies in movieIdRated
