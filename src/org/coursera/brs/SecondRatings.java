@@ -17,7 +17,7 @@ public class SecondRatings {
     
     public SecondRatings() {
         // default constructor
-        this("ratedmovies.csv", "ratings.csv");
+        this("data\\ratedmovies.csv", "data\\ratings.csv");
     }
 
     public SecondRatings(String movieFile, String ratingsFile) {
@@ -59,6 +59,44 @@ public class SecondRatings {
         }
         return 0.0;
     }
+
+    /**
+     * This method finding the average rating for every movie that has been rated
+     * by at least minimalRaters raters. Store each such rating in a Rating object in
+     * which the movie ID and the average rating are used in creating the Rating object
+     *
+     * @param minimalRaters representing minimal number of rating for the certain movie.
+     * @return an ArrayList of all the Rating objects for movies that have at least
+     * the minimal number of raters supplying a rating.
+     * */
+    public ArrayList<Rating> getAverageRatings(int minimalRaters){
+        ArrayList<Rating> result= new ArrayList<>();
+        ArrayList<String> movieIdRated = new ArrayList<>();
+        //Adding all ratings made by each rater to movieIdRated
+        for (Rater current : myRaters) {
+            movieIdRated.addAll(current.getItemsRated());
+        }
+        //To store frequency of how many those movies in movieIdRated
+        Map<String, Integer> moviesFrequencyMap = new HashMap<>();
+        for (String movie: movieIdRated){
+            moviesFrequencyMap.put(movie, Collections.frequency(movieIdRated, movie));
+        }
+        //minimalRatersMovie list contains movieIDs with number of raters >= minimalRaters
+        ArrayList<String> minimalRatersMoviesList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry: moviesFrequencyMap.entrySet()){
+            if (entry.getValue() >= minimalRaters){
+                minimalRatersMoviesList.add(entry.getKey());
+            }
+        }
+        //Creating new Rating object from movieID and getAverageByID method
+        //and storing them in result
+        for (String movie: minimalRatersMoviesList){
+            result.add(new Rating(movie, getAverageByID(movie, minimalRaters)));
+        }
+        return result;
+    }
+
+
 
 
 }
