@@ -1,9 +1,10 @@
+package org.coursera.brs;
 
 /**
- * Write a description of SecondRatings here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
+ * Movie
+ *
+ * @author Igor Prus
+ * @version Nov 10/16
  */
 
 import java.util.*;
@@ -14,7 +15,20 @@ public class SecondRatings {
     
     public SecondRatings() {
         // default constructor
-        this("ratedmoviesfull.csv", "ratings.csv");
+        this("ratedmovies.csv", "ratings.csv");
     }
-    
+
+    public SecondRatings(String movieFile, String ratingsFile) {
+        FirstRatings firstRatings = new FirstRatings();
+        myMovies = firstRatings.loadMovies(movieFile);
+        myRaters = firstRatings.loadRaters(ratingsFile);
+    }
+
+    public int getMovieSize(){
+        return myMovies.size();
+    }
+
+    public int getRaterSize(){
+        return myRaters.size();
+    }
 }
