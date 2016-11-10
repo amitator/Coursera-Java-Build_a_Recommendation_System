@@ -1,4 +1,4 @@
-package org.coursera.brs.Week_1_Loading_Data;
+package org.coursera.brs;
 
 /**
  * Movie
