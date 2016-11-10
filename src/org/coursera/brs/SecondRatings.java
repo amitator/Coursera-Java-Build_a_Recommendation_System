@@ -1,10 +1,12 @@
 package org.coursera.brs;
 
 /**
- * Movie
+ * SecondRatings
  *
  * @author Igor Prus
  * @version Nov 10/16
+ *
+ *
  */
 
 import java.util.*;
@@ -32,6 +34,16 @@ public class SecondRatings {
         return myRaters.size();
     }
 
+    /**
+     * This method returns a double representing the average movie rating for this ID
+     * if there are at least minimalRaters ratings. If there are not minimalRaters
+     * ratings, then it returns 0.0.
+     *
+     * @param movieID  representing a movie ID.
+     * @param minimalRaters representing minimal number of rating for the certain movie.
+     * @return average of ratings if there is minimal Rates rated movie
+     * or 0.0 it there is not.
+     */
     public double getAverageByID(String movieID, int minimalRaters){
         int ratersCounter = 0;
         double totalRatings = 0.0;
