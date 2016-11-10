@@ -123,7 +123,7 @@ public class SecondRatings {
                 return movie.getID();
             }
         }
-        return "NO SUCH TITLE."
+        return "NO SUCH TITLE.";
     }
 
 }
