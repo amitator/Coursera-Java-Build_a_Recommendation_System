@@ -36,7 +36,7 @@ public class FirstRatings {
 
     public void testLoadMovies(){
         ArrayList<Movie> movies = new ArrayList<>();
-        movies = loadMovies("data\\ratedmovies_short.csv");
+        movies = loadMovies("data\\ratedmovies.csv");
         System.out.println("\n===================================");
         System.out.println("\t\t\ttestLoadMovies()");
         System.out.println("===================================");
@@ -48,7 +48,7 @@ public class FirstRatings {
         Map<String, Integer> directorsMap = new HashMap<>();
 
         for (Movie movie: movies){
-            System.out.println(movie);
+//            System.out.println(movie);
             if (movie.getGenres().contains(genre)){
                 genreCounter++;
             }
@@ -73,9 +73,9 @@ public class FirstRatings {
                 " movies in " + genre);
         System.out.println("\nThere are " + minutesCounter +
                 " movies longer then " + movieLength + " minutes");
-        System.out.println("\nMaximum number of movies (" + directorsMap.size() +
-                ") having following directors:");
         int maxValue = Collections.max(directorsMap.values());
+        System.out.println("\nMaximum number of movies (" + maxValue
+                +") having following directors:");
         for (Map.Entry<String, Integer> entry: directorsMap.entrySet()) {
             //If director's movie counter == MAX, then print him
             if (entry.getValue() == maxValue){
@@ -120,12 +120,12 @@ public class FirstRatings {
 
     public void testLoadRaters(){
         ArrayList<Rater> raters = new ArrayList<>();
-        raters = loadRaters("data\\ratings_short.csv");
+        raters = loadRaters("data\\ratings.csv");
         System.out.println("\n===================================");
         System.out.println("\t\t\ttestLoadRaters()");
         System.out.println("===================================");
         System.out.println("Number of raters: " + raters.size() + "\n");
-        String neededRaterID = "2";
+        String neededRaterID = "193";
         String movieID = "1798709";
         int maxNumRatings = 0;
         int numRatingForParticularMovieCounter = 0;
