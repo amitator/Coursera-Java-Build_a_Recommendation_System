@@ -11,15 +11,15 @@ import java.util.*;
 
 public class EfficientRater {
     private String myID;
-    private ArrayList<Rating> myRatings;
+    private HashMap<String, Rating> myRatings;
 
     public EfficientRater(String id) {
         myID = id;
-        myRatings = new ArrayList<Rating>();
+        myRatings = new HashMap<>();
     }
 
     public void addRating(String item, double rating) {
-        myRatings.add(new Rating(item,rating));
+        myRatings.put(item, new Rating(item,rating));
     }
 
     public boolean hasRating(String item) {
