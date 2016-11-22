@@ -21,6 +21,7 @@ public class GenreFilter implements Filter{
     public boolean satisfies(String id) {
         String[] genreArray = MovieDatabase.getGenres(id).split("\\s+");
         for (String current: genreArray){
+            current = current.replaceAll(",","");
             if (current.equals(genre)){
                 return true;
             }

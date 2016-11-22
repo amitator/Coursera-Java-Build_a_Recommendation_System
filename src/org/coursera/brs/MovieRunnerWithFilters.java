@@ -26,7 +26,7 @@ public class MovieRunnerWithFilters {
      * title for those movies that have at least a specified number of ratings
      */
     public void printAverageRatings(){
-        System.out.println("\n===================================");
+        System.out.println("===================================");
         System.out.println("\t\t\tprintAverageRatings()");
         System.out.println("===================================");
         //For all those movies that have at least a specified number of ratings
@@ -46,12 +46,12 @@ public class MovieRunnerWithFilters {
      * print its rating, its year, and its title
      */
     public void printAverageRatingsByYear(){
-        System.out.println("\n===================================");
-        System.out.println("\t\t\tprintAverageRatingsByYear()");
+        System.out.println("===================================");
+        System.out.println("\tprintAverageRatingsByYear()");
         System.out.println("===================================");
         //For all those movies that have at least a specified number of ratings
         int minNumRatings = 1;
-        int yearAfter = 1990;
+        int yearAfter = 2000;
         YearAfterFilter filter = new YearAfterFilter(yearAfter);
         ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, filter);
         Collections.sort(ratings);
@@ -70,13 +70,14 @@ public class MovieRunnerWithFilters {
      * Print the number of movies found, and for each movie found, print its rating, its year, and its title
      */
     public void printAverageRatingsByGenre(){
-        System.out.println("\n===================================");
-        System.out.println("\t\t\tprintAverageRatingsByGenre()");
+        System.out.println("===================================");
+        System.out.println("\tprintAverageRatingsByGenre()");
         System.out.println("===================================");
         int minNumRatings = 1;
         String genre = "Crime";
         GenreFilter genreFilter = new GenreFilter(genre);
         ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, genreFilter);
+        Collections.sort(ratings);
         System.out.println("Movies that have at least " + minNumRatings + " ratings and genre "
                 + genre);
         System.out.println("Total number of movies " + ratings.size() + "\n");
