@@ -23,8 +23,8 @@ public class EfficientRater {
     }
 
     public boolean hasRating(String item) {
-        for(int k=0; k < myRatings.size(); k++){
-            if (myRatings.get(k).getItem().equals(item)){
+        for(Map.Entry<String, Rating> entry : myRatings.entrySet()){
+            if (entry.getKey().equals(item)){
                 return true;
             }
         }
@@ -37,9 +37,9 @@ public class EfficientRater {
     }
 
     public double getRating(String item) {
-        for(int k=0; k < myRatings.size(); k++){
-            if (myRatings.get(k).getItem().equals(item)){
-                return myRatings.get(k).getValue();
+        for(Map.Entry<String, Rating> entry : myRatings.entrySet()){
+            if (entry.getKey().equals(item)){
+                return entry.getValue().getValue();
             }
         }
 
@@ -51,9 +51,9 @@ public class EfficientRater {
     }
 
     public ArrayList<String> getItemsRated() {
-        ArrayList<String> list = new ArrayList<String>();
-        for(int k=0; k < myRatings.size(); k++){
-            list.add(myRatings.get(k).getItem());
+        ArrayList<String> list = new ArrayList<>();
+        for (Map.Entry<String, Rating> entry : myRatings.entrySet()) {
+            list.add(entry.getKey());
         }
 
         return list;

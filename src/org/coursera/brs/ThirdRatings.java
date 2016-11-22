@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * AllFilters
+ * ThirdRatings
  *
  * @author Igor Prus
  * @version Nov 13/16
@@ -15,22 +15,15 @@ import java.util.Map;
  */
 
 public class ThirdRatings {
-    private ArrayList<Movie> myMovies;
     private ArrayList<EfficientRater> myRaters;
 
     public ThirdRatings() {
-        // default constructor
-        this("data\\ratedmovies.csv", "data\\ratings.csv");
+        this("data\\ratings.csv");
     }
 
-    public ThirdRatings(String movieFile, String ratingsFile) {
+    public ThirdRatings(String ratingsFile) {
         FirstRatings firstRatings = new FirstRatings();
-        myMovies = firstRatings.loadMovies(movieFile);
         myRaters = firstRatings.loadRaters(ratingsFile);
-    }
-
-    public int getMovieSize(){
-        return myMovies.size();
     }
 
     public int getRaterSize(){
@@ -99,33 +92,4 @@ public class ThirdRatings {
         return result;
     }
 
-    /**
-     * This method for finding title of the movie with certain movieID
-     *
-     * @param movieID representing the ID of a movie
-     * @return the title of the movie with that ID
-     * */
-    public String getTitle(String movieID){
-        for (Movie movie: myMovies){
-            if (movie.getID().equals(movieID)) {
-                return movie.getTitle();
-            }
-        }
-        return "Movie with movieID " + movieID + " was not found";
-    }
-
-    /**
-     * This method for finding movieID of the movie with certain title
-     *
-     * @param title representing title of the movie
-     * @return the ID of the movie with that title
-     * */
-    public String getID(String title){
-        for (Movie movie: myMovies){
-            if (movie.getTitle().equals(title)){
-                return movie.getID();
-            }
-        }
-        return "NO SUCH TITLE.";
-    }
 }

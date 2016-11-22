@@ -5,8 +5,8 @@ public class Test {
 //        FirstRatings firstRatings = new FirstRatings();
 //        firstRatings.testLoadMovies();
 //        firstRatings.testLoadRaters();
-        MovieRunnerAverage runner = new MovieRunnerAverage();
-        runner.printAverageRatings();
+//        MovieRunnerAverage runner = new MovieRunnerAverage();
+//        runner.printAverageRatings();
 //        runner.getAverageRatingOneMovie();
 
 
@@ -18,5 +18,7 @@ public class Test {
 //        }
 //        System.out.println("\nSize: " + temp.size()+ "\n");
 //        System.out.println(secondRatings.getTitle("04467sqaq55"));
+        MovieRunnerWithFilters runner = new MovieRunnerWithFilters();
+        runner.printAverageRatings();
     }
 }
