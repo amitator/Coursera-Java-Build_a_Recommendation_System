@@ -12,18 +12,21 @@ package org.coursera.brs;
  */
 
 public class DirectorsFilter implements Filter {
-    private String[] directors;
+    private String[] requiredDirectors;
 
     public DirectorsFilter(String directorsList){
-        directorsList = directorsList.replaceAll(",", "");
-        directors = directorsList.split("\\s+");
+        requiredDirectors = directorsList.split(",");
     }
 
+    @Override
     public boolean satisfies(String id){
-        String movieDirector = MovieDatabase.getDirector(id);
-        for (String current: directors){
-            if (current.equals(movieDirector)){
-                return true;
+        String[] movieDirectors = MovieDatabase.getDirector(id).split(",");
+
+        for (String currRequireq: requiredDirectors){
+            for (String currMovieDirs: movieDirectors) {
+                if (currMovieDirs.equals(currRequireq)) {
+                    return true;
+                }
             }
         }
         return false;

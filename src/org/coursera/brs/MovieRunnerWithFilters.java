@@ -111,4 +111,39 @@ public class MovieRunnerWithFilters {
                     + MovieDatabase.getTitle(current.getItem()));
         }
     }
+
+    public void printAverageRatingsByDirectors(){
+        System.out.println("===================================");
+        System.out.println("\tprintAverageRatingsByDirectors()");
+        System.out.println("===================================");
+        int minNumRatings = 1;
+        String director
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
