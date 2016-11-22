@@ -86,4 +86,29 @@ public class MovieRunnerWithFilters {
                     + MovieDatabase.getTitle(current.getItem()));
         }
     }
+
+    /**
+     * This method prints all the movies that have a specified number of minimal ratings and duration in range of
+     * min and max time. Print the number of movies found, and for each movie print its rating, its running time,
+     * and its title on one line.
+     */
+    public void printAverageRatingsByMinutes(){
+        System.out.println("===================================");
+        System.out.println("\tprintAverageRatingsByMinutes()");
+        System.out.println("===================================");
+        int minNumRatings = 1;
+        int minMin = 110;
+        int maxMin = 170;
+        MinutesFilter minutesFilter = new MinutesFilter(minMin, maxMin);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, minutesFilter);
+        Collections.sort(ratings);
+        System.out.println("Movies that have at least " + minNumRatings + " ratings and min length of "
+                + minMin + " and max length of " + maxMin);
+        System.out.println("Total number of movies " + ratings.size() + "\n");
+        for (Rating current: ratings){
+            System.out.println(current.getValue() + "\t"
+                    + + MovieDatabase.getMinutes(current.getItem()) + "\t"
+                    + MovieDatabase.getTitle(current.getItem()));
+        }
+    }
 }
