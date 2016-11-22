@@ -50,11 +50,11 @@ public class MovieRunnerWithFilters {
                 + "\t" + "Number of ratings: " + thirdRatings.getRaterSize() + "\n");
         //For all those movies that have at least a specified number of ratings
         int minNumRatings = 1;
-        int yearAfter = 2000;
+        int yearAfter = 1990;
         YearAfterFilter filter = new YearAfterFilter(yearAfter);
         ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, filter);
         Collections.sort(ratings);
-        System.out.println("Movies that have at least " + minNumRatings + " ratings and came out after"
+        System.out.println("Movies that have at least " + minNumRatings + " ratings and came out after "
                             + yearAfter);
         System.out.println("Total number of movies " + ratings.size() + "\n");
         for (Rating current: ratings){
