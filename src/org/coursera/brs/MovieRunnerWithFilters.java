@@ -112,12 +112,28 @@ public class MovieRunnerWithFilters {
         }
     }
 
+    /**
+     * This method prints all the movies that have a specified number of minimal ratings and at least one
+     * of the directors provided. Print the number of movies found, and for each movie print its rating
+     * and its title on one line, and all its directors on the next line.
+     */
     public void printAverageRatingsByDirectors(){
         System.out.println("===================================");
         System.out.println("\tprintAverageRatingsByDirectors()");
         System.out.println("===================================");
         int minNumRatings = 1;
-        String director
+        String directors = "Charles Chaplin,Michael Mann,Spike Jonze";
+        DirectorsFilter directorsFilter = new DirectorsFilter(directors);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, directorsFilter);
+        Collections.sort(ratings);
+        System.out.println("Movies that have at least " + minNumRatings + " ratings following directors: "
+                + directors);
+        System.out.println("Total number of movies " + ratings.size() + "\n");
+        for (Rating current: ratings){
+            System.out.println(current.getValue() + "\t"
+                    + MovieDatabase.getTitle(current.getItem()));
+            System.out.println("\t\t\t" + MovieDatabase.getDirector(current.getItem()));
+        }
     }
 }
 

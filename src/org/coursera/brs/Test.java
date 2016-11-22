@@ -21,6 +21,7 @@ public class Test {
         MovieRunnerWithFilters runner = new MovieRunnerWithFilters();
 //        runner.printAverageRatingsByYear();
 //        runner.printAverageRatingsByGenre();
-        runner.printAverageRatingsByMinutes();
+//        runner.printAverageRatingsByMinutes();
+        runner.printAverageRatingsByDirectors();
     }
 }
