@@ -22,6 +22,8 @@ public class Test {
 //        runner.printAverageRatingsByYear();
 //        runner.printAverageRatingsByGenre();
 //        runner.printAverageRatingsByMinutes();
-        runner.printAverageRatingsByDirectors();
+//        runner.printAverageRatingsByDirectors();
+//        runner.printAverageRatingsByYearAfterAndGenre();
+        runner.printAverageRatingsByDirectorsAndMinutes();
     }
 }

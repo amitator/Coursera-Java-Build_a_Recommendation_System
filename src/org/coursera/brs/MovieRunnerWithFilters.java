@@ -168,6 +168,41 @@ public class MovieRunnerWithFilters {
             System.out.println("\t\t\t" + MovieDatabase.getGenres(current.getItem()));
         }
     }
+
+    /**
+     * This method should call getAverageRatingsByFilter to get an ArrayList of type Rating of all the
+     * movies that have a specified number of minimal ratings and the two criteria based on minutes and
+     * directors. Print the number of movies found, and for each movie, print its rating, its time length,
+     * and its title on one line, and all its directors on the next line.
+     */
+    public void printAverageRatingsByDirectorsAndMinutes(){
+        System.out.println("===================================");
+        System.out.println("printAverageRatingsByDirectorsAndMinutes()");
+        System.out.println("===================================");
+        AllFilters allFilters = new AllFilters();
+        //Initializing filters
+        int minNumRatings = 1;
+        int minMin = 30;
+        int maxMin = 170;
+        String directors = "Spike Jonze,Michael Mann,Charles Chaplin,Francis Ford Coppola";
+        DirectorsFilter directorsFilter = new DirectorsFilter(directors);
+        MinutesFilter minutesFilter = new MinutesFilter(minMin, maxMin);
+        allFilters.addFilter(directorsFilter);
+        allFilters.addFilter(minutesFilter);
+        ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, allFilters);
+        Collections.sort(ratings);
+        System.out.println("Movies that have at least " + minNumRatings + " ratings and min length of "
+                + minMin + " and max length of "
+                + maxMin + " and following director(s): "
+                + directors);
+        System.out.println("Total number of movies " + ratings.size() + "\n");
+        for (Rating current: ratings){
+            System.out.println(current.getValue() + "\t"
+                    + "Time: " + MovieDatabase.getMinutes(current.getItem()) + "\t"
+                    + MovieDatabase.getTitle(current.getItem()));
+            System.out.println("\t\t\t" + MovieDatabase.getDirector(current.getItem()));
+        }
+    }
 }
 
 
