@@ -1,11 +1,14 @@
 package org.coursera.brs;
 
-import edu.duke.*;
-import java.util.*;
-import org.apache.commons.csv.*;
+import edu.duke.FileResource;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
- * RaterDatabase
+ * RaterDatabase - provided by the cource
  *
  * @author Igor Prus
  * @version Nov 23/16
