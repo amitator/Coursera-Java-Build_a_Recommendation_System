@@ -9,7 +9,7 @@ package org.coursera.brs;
 
 import java.util.*;
 
-public class EfficientRater {
+public class EfficientRater implements Rater{
     private String myID;
     private HashMap<String, Rating> myRatings;
 
