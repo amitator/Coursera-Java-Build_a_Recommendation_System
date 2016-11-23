@@ -16,8 +16,8 @@ public class MovieRunnerWithFilters {
     private ThirdRatings thirdRatings;
 
     public MovieRunnerWithFilters(){
-        MovieDatabase.initialize("ratedmovies_short.csv");
-        thirdRatings = new ThirdRatings("data\\ratings_short.csv");
+        MovieDatabase.initialize("ratedmovies.csv");
+        thirdRatings = new ThirdRatings("data\\ratings.csv");
         System.out.println("\nNumber of movies: " + MovieDatabase.size()
                 + "\t" + "Number of ratings: " + thirdRatings.getRaterSize() + "\n");
     }
@@ -30,14 +30,14 @@ public class MovieRunnerWithFilters {
         System.out.println("\t\t\tprintAverageRatings()");
         System.out.println("===================================");
         //For all those movies that have at least a specified number of ratings
-        int minNumRatings = 1;
+        int minNumRatings = 35;
         ArrayList<Rating> ratings = thirdRatings.getAverageRatings(minNumRatings);
         Collections.sort(ratings);
         System.out.println("Movies that have at least " + minNumRatings + " ratings");
         System.out.println("Total number of movies " + ratings.size() + "\n");
-        for (Rating current: ratings){
-            System.out.println(current.getValue() + "\t" + MovieDatabase.getTitle(current.getItem()));
-        }
+//        for (Rating current: ratings){
+//            System.out.println(current.getValue() + "\t" + MovieDatabase.getTitle(current.getItem()));
+//        }
     }
 
     /**
@@ -50,7 +50,7 @@ public class MovieRunnerWithFilters {
         System.out.println("\tprintAverageRatingsByYear()");
         System.out.println("===================================");
         //For all those movies that have at least a specified number of ratings
-        int minNumRatings = 1;
+        int minNumRatings = 20;
         int yearAfter = 2000;
         YearAfterFilter filter = new YearAfterFilter(yearAfter);
         ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, filter);
@@ -58,11 +58,11 @@ public class MovieRunnerWithFilters {
         System.out.println("Movies that have at least " + minNumRatings + " ratings and came out after "
                             + yearAfter);
         System.out.println("Total number of movies " + ratings.size() + "\n");
-        for (Rating current: ratings){
-            System.out.println(current.getValue() + "\t"
-                                + MovieDatabase.getYear(current.getItem()) + "\t"
-                                + MovieDatabase.getTitle(current.getItem()));
-        }
+//        for (Rating current: ratings){
+//            System.out.println(current.getValue() + "\t"
+//                                + MovieDatabase.getYear(current.getItem()) + "\t"
+//                                + MovieDatabase.getTitle(current.getItem()));
+//        }
     }
 
     /**
@@ -73,18 +73,18 @@ public class MovieRunnerWithFilters {
         System.out.println("===================================");
         System.out.println("\tprintAverageRatingsByGenre()");
         System.out.println("===================================");
-        int minNumRatings = 1;
-        String genre = "Crime";
+        int minNumRatings = 20;
+        String genre = "Comedy";
         GenreFilter genreFilter = new GenreFilter(genre);
         ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, genreFilter);
         Collections.sort(ratings);
         System.out.println("Movies that have at least " + minNumRatings + " ratings and genre "
                 + genre);
         System.out.println("Total number of movies " + ratings.size() + "\n");
-        for (Rating current: ratings){
-            System.out.println(current.getValue() + "\t"
-                    + MovieDatabase.getTitle(current.getItem()));
-        }
+//        for (Rating current: ratings){
+//            System.out.println(current.getValue() + "\t"
+//                    + MovieDatabase.getTitle(current.getItem()));
+//        }
     }
 
     /**
@@ -96,20 +96,20 @@ public class MovieRunnerWithFilters {
         System.out.println("===================================");
         System.out.println("\tprintAverageRatingsByMinutes()");
         System.out.println("===================================");
-        int minNumRatings = 1;
-        int minMin = 110;
-        int maxMin = 170;
+        int minNumRatings = 5;
+        int minMin = 105;
+        int maxMin = 135;
         MinutesFilter minutesFilter = new MinutesFilter(minMin, maxMin);
         ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, minutesFilter);
         Collections.sort(ratings);
         System.out.println("Movies that have at least " + minNumRatings + " ratings and min length of "
                 + minMin + " and max length of " + maxMin);
         System.out.println("Total number of movies " + ratings.size() + "\n");
-        for (Rating current: ratings){
-            System.out.println(current.getValue() + "\t"
-                    + + MovieDatabase.getMinutes(current.getItem()) + "\t"
-                    + MovieDatabase.getTitle(current.getItem()));
-        }
+//        for (Rating current: ratings){
+//            System.out.println(current.getValue() + "\t"
+//                    + + MovieDatabase.getMinutes(current.getItem()) + "\t"
+//                    + MovieDatabase.getTitle(current.getItem()));
+//        }
     }
 
     /**
@@ -121,19 +121,19 @@ public class MovieRunnerWithFilters {
         System.out.println("===================================");
         System.out.println("\tprintAverageRatingsByDirectors()");
         System.out.println("===================================");
-        int minNumRatings = 1;
-        String directors = "Charles Chaplin,Michael Mann,Spike Jonze";
+        int minNumRatings = 4;
+        String directors = "Clint Eastwood,Joel Coen,Martin Scorsese,Roman Polanski,Nora Ephron,Ridley Scott,Sydney Pollack";
         DirectorsFilter directorsFilter = new DirectorsFilter(directors);
         ArrayList<Rating> ratings = thirdRatings.getAverageRatingsByFilter(minNumRatings, directorsFilter);
         Collections.sort(ratings);
         System.out.println("Movies that have at least " + minNumRatings + " ratings following directors: "
                 + directors);
         System.out.println("Total number of movies " + ratings.size() + "\n");
-        for (Rating current: ratings){
-            System.out.println(current.getValue() + "\t"
-                    + MovieDatabase.getTitle(current.getItem()));
-            System.out.println("\t\t\t" + MovieDatabase.getDirector(current.getItem()));
-        }
+//        for (Rating current: ratings){
+//            System.out.println(current.getValue() + "\t"
+//                    + MovieDatabase.getTitle(current.getItem()));
+//            System.out.println("\t\t\t" + MovieDatabase.getDirector(current.getItem()));
+//        }
     }
 
     /**
@@ -148,9 +148,9 @@ public class MovieRunnerWithFilters {
         System.out.println("===================================");
         AllFilters allFilters = new AllFilters();
         //Initializing filters
-        int minNumRatings = 1;
-        int year = 1980;
-        String genre = "Romance";
+        int minNumRatings = 8;
+        int year = 1990;
+        String genre = "Drama";
         YearAfterFilter yearAfterFilter = new YearAfterFilter(year);
         GenreFilter genreFilter = new GenreFilter(genre);
         allFilters.addFilter(yearAfterFilter);
@@ -161,12 +161,12 @@ public class MovieRunnerWithFilters {
                 + genre + " genre, made on or after "
                 + year);
         System.out.println("Total number of movies " + ratings.size() + "\n");
-        for (Rating current: ratings){
-            System.out.println(current.getValue() + "\t"
-                    + MovieDatabase.getYear(current.getItem()) + "\t"
-                    + MovieDatabase.getTitle(current.getItem()));
-            System.out.println("\t\t\t" + MovieDatabase.getGenres(current.getItem()));
-        }
+//        for (Rating current: ratings){
+//            System.out.println(current.getValue() + "\t"
+//                    + MovieDatabase.getYear(current.getItem()) + "\t"
+//                    + MovieDatabase.getTitle(current.getItem()));
+//            System.out.println("\t\t\t" + MovieDatabase.getGenres(current.getItem()));
+//        }
     }
 
     /**
@@ -181,10 +181,10 @@ public class MovieRunnerWithFilters {
         System.out.println("===================================");
         AllFilters allFilters = new AllFilters();
         //Initializing filters
-        int minNumRatings = 1;
-        int minMin = 30;
-        int maxMin = 170;
-        String directors = "Spike Jonze,Michael Mann,Charles Chaplin,Francis Ford Coppola";
+        int minNumRatings = 3;
+        int minMin = 90;
+        int maxMin = 180;
+        String directors = "Clint Eastwood,Joel Coen,Tim Burton,Ron Howard,Nora Ephron,Sydney Pollack";
         DirectorsFilter directorsFilter = new DirectorsFilter(directors);
         MinutesFilter minutesFilter = new MinutesFilter(minMin, maxMin);
         allFilters.addFilter(directorsFilter);
@@ -196,12 +196,12 @@ public class MovieRunnerWithFilters {
                 + maxMin + " and following director(s): "
                 + directors);
         System.out.println("Total number of movies " + ratings.size() + "\n");
-        for (Rating current: ratings){
-            System.out.println(current.getValue() + "\t"
-                    + "Time: " + MovieDatabase.getMinutes(current.getItem()) + "\t"
-                    + MovieDatabase.getTitle(current.getItem()));
-            System.out.println("\t\t\t" + MovieDatabase.getDirector(current.getItem()));
-        }
+//        for (Rating current: ratings){
+//            System.out.println(current.getValue() + "\t"
+//                    + "Time: " + MovieDatabase.getMinutes(current.getItem()) + "\t"
+//                    + MovieDatabase.getTitle(current.getItem()));
+//            System.out.println("\t\t\t" + MovieDatabase.getDirector(current.getItem()));
+//        }
     }
 }
 

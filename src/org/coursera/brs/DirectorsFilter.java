@@ -21,6 +21,9 @@ public class DirectorsFilter implements Filter {
     @Override
     public boolean satisfies(String id){
         String[] movieDirectors = MovieDatabase.getDirector(id).split(",");
+        for (int i = 0; i < movieDirectors.length; i++){
+            movieDirectors[i] = movieDirectors[i].trim();
+        }
 
         for (String currRequireq: requiredDirectors){
             for (String currMovieDirs: movieDirectors) {

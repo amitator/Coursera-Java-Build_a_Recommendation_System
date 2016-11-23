@@ -19,6 +19,7 @@ public class Test {
 //        System.out.println("\nSize: " + temp.size()+ "\n");
 //        System.out.println(secondRatings.getTitle("04467sqaq55"));
         MovieRunnerWithFilters runner = new MovieRunnerWithFilters();
+//        runner.printAverageRatings();
 //        runner.printAverageRatingsByYear();
 //        runner.printAverageRatingsByGenre();
 //        runner.printAverageRatingsByMinutes();
