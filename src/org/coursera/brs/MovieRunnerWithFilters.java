@@ -21,6 +21,7 @@ public class MovieRunnerWithFilters {
         System.out.println("\nNumber of movies: " + MovieDatabase.size()
                 + "\t" + "Number of ratings: " + thirdRatings.getRaterSize() + "\n");
     }
+
     /**
      * This method prints amount of movies and raitings loaded. Also prints average rating and
      * title for those movies that have at least a specified number of ratings

@@ -18,7 +18,9 @@ public class FourthRatings {
     public double getAverageByID(String movieID, int minimalRaters){
         int ratersCounter = 0;
         double totalRatings = 0.0;
-        for (EfficientRater rater: myRaters){
+        ArrayList<Rater> myRaters = new ArrayList<>();
+        myRaters = RaterDatabase.getRaters();
+        for (Rater rater: myRaters){
             //If rater has rating for movieID movie then ++counter and sum rating to rating counter
             if (rater.hasRating(movieID)){
                 ratersCounter++;
@@ -35,8 +37,10 @@ public class FourthRatings {
         ArrayList<Rating> result= new ArrayList<>();
         ArrayList<String> movieIdRated = new ArrayList<>();
         //Adding all ratings made by each rater to movieIdRated
-        for (EfficientRater current : myRaters) {
-            movieIdRated.addAll(current.getItemsRated());
+        ArrayList<Rater> myRaters = new ArrayList<>();
+        myRaters = RaterDatabase.getRaters();
+        for (Rater rater: myRaters){
+            movieIdRated.addAll(rater.getItemsRated());
         }
         //To store frequency of how many those movies in movieIdRated
         Map<String, Integer> moviesFrequencyMap = new HashMap<>();
@@ -67,7 +71,6 @@ public class FourthRatings {
                 result.add(rating);
             }
         }
-
         return result;
     }
 
