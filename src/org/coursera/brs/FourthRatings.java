@@ -145,4 +145,39 @@ public class FourthRatings {
         return result;
     }
 
+    /**
+     * This method returns an ArrayList of type Rating, of movies and their weighted average ratings
+     * using only the top numSimilarRaters with positive ratings and including only those movies that
+     * have at least minimalRaters ratings from those most similar raters (not just minimalRaters
+     * ratings overall).
+     */
+    public ArrayList<Rating> getSimilarRatings(String id, int numSimilarRaters, int minimalRaters) {
+        ArrayList<Rating> result = new ArrayList<>();
+        ArrayList<Rating> similarRaters = getSimilarities(id);
+        ArrayList<Rating> topRaters = new ArrayList<>();
+        for (int i = 0; i < numSimilarRaters; i++) {
+            topRaters.add(similarRaters.get(i));
+        }
+        System.out.println("Top Raters size: " + topRaters.size());
+        //Movie weight
+        ArrayList<String> movies = MovieDatabase.filterBy(new TrueFilter());
+        for (String movieID : movies) {
+            double count_raters = 0;
+            double score = 0;
+            for (Rating rater : topRaters) {
+                Rater topRater = RaterDatabase.getRater(rater.getItem());
+                if (topRater.hasRating(movieID)) {
+                    count_raters += 1;
+                    score += rater.getValue() * topRater.getRating(movieID);
+                }
+            }
+            if (count_raters >= minimalRaters) {
+                double weightedAverage = score / count_raters;
+                Rating rating = new Rating(movieID, weightedAverage);
+                result.add(rating);
+            }
+        }
+        Collections.sort(result, Collections.<Rating>reverseOrder());
+        return result;
+    }
 }
