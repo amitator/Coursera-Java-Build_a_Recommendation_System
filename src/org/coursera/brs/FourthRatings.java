@@ -153,8 +153,8 @@ public class FourthRatings {
      */
     public ArrayList<Rating> getSimilarRatings(String id, int numSimilarRaters, int minimalRaters) {
         ArrayList<Rating> result = new ArrayList<>();
-        ArrayList<Rating> similarRaters = getSimilarities(id);
         ArrayList<Rating> topRaters = new ArrayList<>();
+        ArrayList<Rating> similarRaters = getSimilarities(id);
         for (int i = 0; i < numSimilarRaters; i++) {
             topRaters.add(similarRaters.get(i));
         }
@@ -162,17 +162,53 @@ public class FourthRatings {
         //Movie weight
         ArrayList<String> movies = MovieDatabase.filterBy(new TrueFilter());
         for (String movieID : movies) {
-            double count_raters = 0;
+            double ratersCount = 0;
             double score = 0;
             for (Rating rater : topRaters) {
                 Rater topRater = RaterDatabase.getRater(rater.getItem());
                 if (topRater.hasRating(movieID)) {
-                    count_raters += 1;
+                    ratersCount += 1;
                     score += rater.getValue() * topRater.getRating(movieID);
                 }
             }
-            if (count_raters >= minimalRaters) {
-                double weightedAverage = score / count_raters;
+            if (ratersCount >= minimalRaters) {
+                double weightedAverage = score / ratersCount;
+                Rating rating = new Rating(movieID, weightedAverage);
+                result.add(rating);
+            }
+        }
+        Collections.sort(result, Collections.<Rating>reverseOrder());
+        return result;
+    }
+
+    /**
+     * This method is similar to the getSimilarRatings method but has one additional Filter parameter
+     * named filterCriteria and uses that filter to access and rate only those movies that match the
+     * filter criteria.
+     */
+    public ArrayList<Rating> getSimilarRatingsByFilter(String id, int numSimilarRaters, int minimalRaters,
+                                                       Filter filterCriteria) {
+        ArrayList<Rating> result = new ArrayList<>();
+        ArrayList<Rating> topRaters = new ArrayList<>();
+        ArrayList<Rating> similarRaters = getSimilarities(id);
+        for (int i = 0; i < numSimilarRaters; i++) {
+            topRaters.add(similarRaters.get(i));
+        }
+        System.out.println("Top Raters size: " + topRaters.size());
+        //Movie weight
+        ArrayList<String> movies = MovieDatabase.filterBy(filterCriteria);
+        for (String movieID : movies) {
+            double ratersCount = 0;
+            double score = 0;
+            for (Rating rater : topRaters) {
+                Rater topRater = RaterDatabase.getRater(rater.getItem());
+                if (topRater.hasRating(movieID)) {
+                    ratersCount += 1;
+                    score += rater.getValue() * topRater.getRating(movieID);
+                }
+            }
+            if (ratersCount >= minimalRaters) {
+                double weightedAverage = score / ratersCount;
                 Rating rating = new Rating(movieID, weightedAverage);
                 result.add(rating);
             }
