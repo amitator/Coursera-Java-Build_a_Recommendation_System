@@ -16,9 +16,10 @@ public class MovieRunnerSimilarRatings {
 
     public MovieRunnerSimilarRatings(){
         MovieDatabase.initialize("ratedmovies.csv");
-        RaterDatabase.initialize("data\\ratings.csv");
+        RaterDatabase.initialize("ratings.csv");
         System.out.println("\nNumber of movies: " + MovieDatabase.size()
                 + "\t" + "Number of ratings: " + RaterDatabase.size() + "\n");
+        fourthRatings = new FourthRatings();
     }
 
     /**

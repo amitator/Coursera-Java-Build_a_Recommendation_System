@@ -18,13 +18,16 @@ public class Test {
 //        }
 //        System.out.println("\nSize: " + temp.size()+ "\n");
 //        System.out.println(secondRatings.getTitle("04467sqaq55"));
-        MovieRunnerWithFilters runner = new MovieRunnerWithFilters();
+//        MovieRunnerWithFilters runner = new MovieRunnerWithFilters();
 //        runner.printAverageRatings();
 //        runner.printAverageRatingsByYear();
 //        runner.printAverageRatingsByGenre();
 //        runner.printAverageRatingsByMinutes();
 //        runner.printAverageRatingsByDirectors();
 //        runner.printAverageRatingsByYearAfterAndGenre();
-        runner.printAverageRatingsByDirectorsAndMinutes();
+//        runner.printAverageRatingsByDirectorsAndMinutes();
+        MovieRunnerSimilarRatings runner = new MovieRunnerSimilarRatings();
+        runner.printAverageRatings();
+        runner.printAverageRatingsByYearAfterAndGenre();
     }
 }

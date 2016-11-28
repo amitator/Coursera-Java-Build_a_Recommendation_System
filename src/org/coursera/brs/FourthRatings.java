@@ -15,6 +15,16 @@ import java.util.Map;
 
 public class FourthRatings {
 
+    /**
+     * This method returns a double representing the average movie rating for this ID
+     * if there are at least minimalRaters ratings. If there are not minimalRaters
+     * ratings, then it returns 0.0.
+     *
+     * @param movieID  representing a movie ID.
+     * @param minimalRaters representing minimal number of rating for the certain movie.
+     * @return average of ratings if there is minimal Rates rated movie
+     * or 0.0 it there is not.
+     */
     public double getAverageByID(String movieID, int minimalRaters){
         int ratersCounter = 0;
         double totalRatings = 0.0;
@@ -33,6 +43,15 @@ public class FourthRatings {
         return 0.0;
     }
 
+    /**
+     * This method finding the average rating for every movie that has been rated
+     * by at least minimalRaters raters. Store each such rating in a Rating object in
+     * which the movie ID and the average rating are used in creating the Rating object
+     *
+     * @param minimalRaters representing minimal number of rating for the certain movie.
+     * @return an ArrayList of all the Rating objects for movies that have at least
+     * the minimal number of raters supplying a rating.
+     * */
     public ArrayList<Rating> getAverageRatings(int minimalRaters){
         ArrayList<Rating> result= new ArrayList<>();
         ArrayList<String> movieIdRated = new ArrayList<>();
@@ -62,6 +81,15 @@ public class FourthRatings {
         return result;
     }
 
+    /**
+     * This method should create and return an ArrayList of type Rating of all
+     * the movies that have at least minimalRaters ratings and satisfies the filter criteria.
+     *
+     * @param minimalRaters representing minimal number of rating for the certain movie.
+     * @param filterCriteria representing filter to use
+     * @return  an ArrayList of all the Rating objects for movies that have at least
+     * the minimal number of raters supplying a rating and meet Filter criteria.
+     */
     public ArrayList<Rating> getAverageRatingsByFilter(int minimalRaters, Filter filterCriteria){
         ArrayList<Rating> result = new ArrayList<>();
         ArrayList<Rating> avrRating = new ArrayList<>();
@@ -71,6 +99,49 @@ public class FourthRatings {
                 result.add(rating);
             }
         }
+        return result;
+    }
+
+    /**
+     *  This method translates a rating from the scale 0 to 10 to the scale -5 to 5
+     *
+     *  @param me
+     *  @param rater
+     *  @return the dot product of the ratings of movies that they both rated
+     * */
+    private double dotProduct(Rater me, Rater rater){
+        double dotproduct = 0;
+        ArrayList<String> movieItemList = me.getItemsRated();
+        for (String id : movieItemList) {
+            if (rater.hasRating(id)) {
+                dotproduct += (me.getRating(id) - 5.) * (rater.getRating(id) - 5.);
+            }
+        }
+        return dotproduct;
+    }
+
+    /**
+     * this method computes a similarity rating for each rater in the RaterDatabase
+     * (except the rater with the ID given by the parameter) to see how similar they are to
+     * the Rater whose ID is the parameter to getSimilarities.
+     *
+     * @param id
+     * @return an ArrayList of type Rating sorted by ratings from highest to lowest rating
+     * with the highest rating first and only including those raters who have a positive similarity
+     * rating since those with negative values are not similar in any way.
+     * */
+    private ArrayList<Rating> getSimilarities(String id){
+        ArrayList<Rating> result = new ArrayList<Rating>();
+        for (Rater rater : RaterDatabase.getRaters()) {
+            if (!rater.getID().equals(id)) {
+                double dotproduct = dotProduct(RaterDatabase.getRater(id), rater);
+                if (dotproduct > 0) {
+                    Rating rating = new Rating(rater.getID(), dotproduct);
+                    result.add(rating);
+                }
+            }
+        }
+        Collections.sort(result, Collections.<Rating>reverseOrder());
         return result;
     }
 

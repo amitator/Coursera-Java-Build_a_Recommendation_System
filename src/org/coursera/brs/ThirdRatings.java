@@ -95,7 +95,12 @@ public class ThirdRatings {
     /**
      * This method should create and return an ArrayList of type Rating of all
      * the movies that have at least minimalRaters ratings and satisfies the filter criteria.
-     * */
+     *
+     * @param minimalRaters representing minimal number of rating for the certain movie.
+     * @param filterCriteria representing filter to use
+     * @return  an ArrayList of all the Rating objects for movies that have at least
+     * the minimal number of raters supplying a rating and meet Filter criteria.
+     */
     public ArrayList<Rating> getAverageRatingsByFilter(int minimalRaters, Filter filterCriteria){
         ArrayList<Rating> result = new ArrayList<>();
         ArrayList<Rating> avrRating = new ArrayList<>();
