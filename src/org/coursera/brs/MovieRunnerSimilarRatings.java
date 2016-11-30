@@ -84,9 +84,8 @@ public class MovieRunnerSimilarRatings {
         FourthRatings fourthrating = new FourthRatings();
         ArrayList<Rating> ratings = fourthrating.getSimilarRatings(raterID, topRaters, minimalRaters);
         System.out.println("Total movies recomended: " + ratings.size() + "\n");
-
         for (Rating rating : ratings) {
-            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+            System.out.println(MovieDatabase.getTitle(rating.getItem()) + "\t" + rating.getValue());
         }
     }
 
@@ -106,7 +105,7 @@ public class MovieRunnerSimilarRatings {
         ArrayList<Rating> rating_list = fourthrating.getSimilarRatingsByFilter(raterID, topRaters, minimalRaters, allfilters);
         System.out.println("Total movies recomended: " + rating_list.size() + "\n");
         for (Rating rating : rating_list) {
-            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+            System.out.println(MovieDatabase.getTitle(rating.getItem()) + "\t" + rating.getValue());
         }
     }
 
@@ -126,7 +125,7 @@ public class MovieRunnerSimilarRatings {
         ArrayList<Rating> rating_list = fourthrating.getSimilarRatingsByFilter(raterID, topRaters, minimalRaters, allfilters);
         System.out.println("Total movies recomended: " + rating_list.size() + "\n");
         for (Rating rating : rating_list) {
-            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+            System.out.println(MovieDatabase.getTitle(rating.getItem()) + "\t" + rating.getValue());
         }
     }
 
@@ -150,7 +149,7 @@ public class MovieRunnerSimilarRatings {
         ArrayList<Rating> rating_list = fourthrating.getSimilarRatingsByFilter(raterID, topRaters, minimalRaters, allfilters);
         System.out.println("Total movies recomended: " + rating_list.size() + "\n");
         for (Rating rating : rating_list) {
-            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+            System.out.println(MovieDatabase.getTitle(rating.getItem()) + "\t" + rating.getValue());
         }
     }
 
@@ -174,7 +173,7 @@ public class MovieRunnerSimilarRatings {
         ArrayList<Rating> rating_list = fourthRatings.getSimilarRatingsByFilter(raterID, topRaters, minimalRaters, allfilters);
         System.out.println("Total movies recomended: " + rating_list.size() + "\n");
         for (Rating rating : rating_list) {
-            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+            System.out.println(MovieDatabase.getTitle(rating.getItem()) + "\t" + rating.getValue());
         }
     }
 

@@ -109,7 +109,7 @@ public class FourthRatings {
      *  @param rater
      *  @return the dot product of the ratings of movies that they both rated
      * */
-    private double dotProduct(Rater me, Rater rater){
+    public double dotProduct(Rater me, Rater rater){
         double dotproduct = 0;
         ArrayList<String> movieItemList = me.getItemsRated();
         for (String id : movieItemList) {

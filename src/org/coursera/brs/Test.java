@@ -27,12 +27,14 @@ public class Test {
 //        runner.printAverageRatingsByYearAfterAndGenre();
 //        runner.printAverageRatingsByDirectorsAndMinutes();
         MovieRunnerSimilarRatings runner = new MovieRunnerSimilarRatings();
-        runner.printAverageRatings();
-        runner.printAverageRatingsByYearAfterAndGenre();
-        runner.printSimilarRatings();
-        runner.printSimilarRatingsByGenre();
-        runner.printSimilarRatingsByDirector();
-        runner.printSimilarRatingsByGenreAndMinutes();
+//        runner.printAverageRatings();
+//        runner.printAverageRatingsByYearAfterAndGenre();
+//        runner.printSimilarRatings();
+//        runner.printSimilarRatingsByGenre();
+//        runner.printSimilarRatingsByDirector();
+//        runner.printSimilarRatingsByGenreAndMinutes();
         runner.printSimilarRatingsByYearAfterAndMinutes();
+//        FourthRatings ratings = new FourthRatings();
+//        System.out.println(ratings.dotProduct(  ));
     }
 }
