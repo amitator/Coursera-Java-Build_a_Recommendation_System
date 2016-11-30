@@ -29,5 +29,10 @@ public class Test {
         MovieRunnerSimilarRatings runner = new MovieRunnerSimilarRatings();
         runner.printAverageRatings();
         runner.printAverageRatingsByYearAfterAndGenre();
+        runner.printSimilarRatings();
+        runner.printSimilarRatingsByGenre();
+        runner.printSimilarRatingsByDirector();
+        runner.printSimilarRatingsByGenreAndMinutes();
+        runner.printSimilarRatingsByYearAfterAndMinutes();
     }
 }

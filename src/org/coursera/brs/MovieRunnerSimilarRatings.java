@@ -48,7 +48,7 @@ public class MovieRunnerSimilarRatings {
      * and its title on one line, and all its genres on the next line
      */
     public void printAverageRatingsByYearAfterAndGenre(){
-        System.out.println("===================================");
+        System.out.println("\n===================================");
         System.out.println("printAverageRatingsByYearAfterAndGenre() ");
         System.out.println("===================================");
         AllFilters allFilters = new AllFilters();
@@ -73,4 +73,109 @@ public class MovieRunnerSimilarRatings {
 //            System.out.println("\t\t\t" + MovieDatabase.getGenres(current.getItem()));
 //        }
     }
+
+    public void printSimilarRatings(){
+        System.out.println("\n===================================");
+        System.out.println("\t\tprintSimilarRatings()");
+        System.out.println("===================================");
+        String raterID = "71";
+        int topRaters = 20;
+        int minimalRaters = 5;
+        FourthRatings fourthrating = new FourthRatings();
+        ArrayList<Rating> ratings = fourthrating.getSimilarRatings(raterID, topRaters, minimalRaters);
+        System.out.println("Total movies recomended: " + ratings.size() + "\n");
+
+        for (Rating rating : ratings) {
+            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+        }
+    }
+
+    public void printSimilarRatingsByGenre () {
+        System.out.println("\n===================================");
+        System.out.println("\t\tprintSimilarRatingsByGenre()");
+        System.out.println("===================================");
+        String raterID = "964";
+        int topRaters = 20;
+        int minimalRaters = 5;
+        AllFilters allfilters = new AllFilters();
+        String type = "Mystery";
+        GenreFilter genrefiler = new GenreFilter(type);
+        allfilters.addFilter(genrefiler);
+        FourthRatings fourthrating = new FourthRatings();
+        //ArrayList<Rating> rating_list = fourthrating.getSimilarRatings(raterID, topRaters, minimalRaters);
+        ArrayList<Rating> rating_list = fourthrating.getSimilarRatingsByFilter(raterID, topRaters, minimalRaters, allfilters);
+        System.out.println("Total movies recomended: " + rating_list.size() + "\n");
+        for (Rating rating : rating_list) {
+            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+        }
+    }
+
+    public void printSimilarRatingsByDirector() {
+        System.out.println("\n===================================");
+        System.out.println("\tprintSimilarRatingsByDirector()");
+        System.out.println("===================================");
+        String raterID = "120";
+        int topRaters = 10;
+        int minimalRaters = 2;
+        AllFilters allfilters = new AllFilters();
+        String name = "Clint Eastwood,J.J. Abrams,Alfred Hitchcock,Sydney Pollack,David Cronenberg,Oliver Stone,Mike Leigh";
+        DirectorsFilter directorFiler = new DirectorsFilter(name);
+        allfilters.addFilter(directorFiler);
+        FourthRatings fourthrating = new FourthRatings();
+        //ArrayList<Rating> rating_list = fourthrating.getSimilarRatings(raterID, topRaters, minimalRaters);
+        ArrayList<Rating> rating_list = fourthrating.getSimilarRatingsByFilter(raterID, topRaters, minimalRaters, allfilters);
+        System.out.println("Total movies recomended: " + rating_list.size() + "\n");
+        for (Rating rating : rating_list) {
+            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+        }
+    }
+
+    public void printSimilarRatingsByGenreAndMinutes() {
+        System.out.println("\n===================================");
+        System.out.println("printSimilarRatingsByGenreAndMinutes()");
+        System.out.println("===================================");
+        String raterID = "168";
+        int topRaters = 10;
+        int minimalRaters = 3;
+        AllFilters allfilters = new AllFilters();
+        String type = "Drama";
+        GenreFilter genrefiler = new GenreFilter(type);
+        allfilters.addFilter(genrefiler);
+        int min = 80;
+        int max = 160;
+        MinutesFilter minutesfiler = new MinutesFilter(min, max);
+        allfilters.addFilter(minutesfiler);
+        FourthRatings fourthrating = new FourthRatings();
+        //ArrayList<Rating> rating_list = fourthrating.getSimilarRatings(raterID, topRaters, minimalRaters);
+        ArrayList<Rating> rating_list = fourthrating.getSimilarRatingsByFilter(raterID, topRaters, minimalRaters, allfilters);
+        System.out.println("Total movies recomended: " + rating_list.size() + "\n");
+        for (Rating rating : rating_list) {
+            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+        }
+    }
+
+    public void printSimilarRatingsByYearAfterAndMinutes() {
+        System.out.println("\n===================================");
+        System.out.println("printSimilarRatingsByYearAfterAndMinutes()");
+        System.out.println("===================================");
+        String raterID = "314";
+        int topRaters = 10;
+        int minimalRaters = 5;
+        AllFilters allfilters = new AllFilters();
+        int year = 1975;
+        YearAfterFilter yearAfterFilter = new YearAfterFilter(year);
+        allfilters.addFilter(yearAfterFilter);
+        int min = 70;
+        int max = 200;
+        MinutesFilter minutesFilter = new MinutesFilter(min, max);
+        allfilters.addFilter(minutesFilter);
+        FourthRatings fourthRatings = new FourthRatings();
+        //ArrayList<Rating> rating_list = fourthRatings.getSimilarRatings(raterID, topRaters, minimalRaters);
+        ArrayList<Rating> rating_list = fourthRatings.getSimilarRatingsByFilter(raterID, topRaters, minimalRaters, allfilters);
+        System.out.println("Total movies recomended: " + rating_list.size() + "\n");
+        for (Rating rating : rating_list) {
+            System.out.println(MovieDatabase.getTitle(rating.getItem()));
+        }
+    }
+
 }
